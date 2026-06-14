@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="/">Admin Panel</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="/admin/dashboard">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="/doctors">Doctors</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/admin/logout">Logout</a></li>
+<li class="nav-item">
+  <button id="themeToggle" class="btn btn-sm btn-light ms-lg-3 mt-2 mt-lg-0">
+    🌙
+  </button>
+</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="page-header py-5">
+  <div class="container">
+    <h1 class="fw-bold text-primary">Admin Dashboard</h1>
+    <p class="lead">Manage doctors, appointments and prescription records.</p>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+
+    <div class="row g-4 mb-5">
+      <div class="col-md-3">
+        <div class="card shadow border-0 text-center h-100">
+          <div class="card-body">
+            <h5>Total Patients</h5>
+            <p class="stat"><%= stats.totalPatients %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card shadow border-0 text-center h-100">
+          <div class="card-body">
+            <h5>Total Doctors</h5>
+            <p class="stat"><%= stats.totalDoctors %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card shadow border-0 text-center h-100">
+          <div class="card-body">
+            <h5>Total Appointments</h5>
+            <p class="stat"><%= stats.totalAppointments %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card shadow border-0 text-center h-100">
+          <div class="card-body">
+            <h5>Total Prescriptions</h5>
+            <p class="stat"><%= stats.totalPrescriptions %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="card shadow border-0 admin-card">
+          <div class="card-body">
+            <h3 class="text-primary fw-bold mb-4">Add Doctor</h3>
+
+<input type="text" name="name" id="doctorName" class="form-control mb-3" placeholder="Doctor Name" required>
+
+<input type="text" name="specialization" id="doctorSpecialization" class="form-control mb-3" placeholder="Specialization" required>
+
+<input type="number" name="experience" id="doctorExperience" class="form-control mb-3" placeholder="Experience" required>
+
+<input type="number" name="fees" id="doctorFees" class="form-control mb-3" placeholder="Fees" required>
+
+<input type="text" name="availableDays" id="doctorAvailableDays" class="form-control mb-3" placeholder="Available Days e.g. Mon-Fri" required>
+
+<p id="doctorError" class="client-error"></p>
+
+              <button type="submit" class="btn btn-primary w-100">Add Doctor</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="card shadow border-0 admin-card">
+          <div class="card-body">
+            <h3 class="text-primary fw-bold mb-4">Doctor List</h3>
+
+            <div class="row g-3">
+              <% if (doctors.length === 0) { %>
+                <div class="alert alert-info">No doctors added yet.</div>
+              <% } %>
+
+              <% doctors.forEach(doctor => { %>
+                <div class="col-md-6">
+                  <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                      <h5 class="fw-bold"><%= doctor.name %></h5>
+                      <p><b>Specialization:</b> <%= doctor.specialization %></p>
+                      <p><b>Experience:</b> <%= doctor.experience %> years</p>
+                      <p><b>Fees:</b> ₹<%= doctor.fees %></p>
+
+                      <form action="/admin/doctors/delete/<%= doctor._id %>" method="POST">
+                        <button type="submit" class="btn btn-danger w-100">Delete Doctor</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <h2 class="fw-bold mb-4">Recent Appointments</h2>
+
+      <div class="row g-4">
+        <% appointments.forEach(app => { %>
+          <div class="col-md-6">
+            <div class="card shadow border-0 h-100">
+              <div class="card-body">
+                <h5 class="text-primary fw-bold">
+                  <%= app.patientId ? app.patientId.name : "Patient Deleted" %>
+                </h5>
+
+                <p><b>Email:</b> <%= app.patientId ? app.patientId.email : "N/A" %></p>
+                <p><b>Doctor:</b> <%= app.doctorId ? app.doctorId.name : "Doctor Deleted" %></p>
+                <p><b>Date:</b> <%= app.appointmentDate %></p>
+                <p><b>Time:</b> <%= app.appointmentTime %></p>
+                <p><b>Status:</b> <%= app.status %></p>
+
+                <form action="/admin/appointments/status/<%= app._id %>" method="POST">
+                  <select name="status" class="form-select mb-3" required>
+                    <option value="Pending" <%= app.status === "Pending" ? "selected" : "" %>>Pending</option>
+                    <option value="Approved" <%= app.status === "Approved" ? "selected" : "" %>>Approved</option>
+                    <option value="Completed" <%= app.status === "Completed" ? "selected" : "" %>>Completed</option>
+                    <option value="Cancelled" <%= app.status === "Cancelled" ? "selected" : "" %>>Cancelled</option>
+                  </select>
+
+                  <button type="submit" class="btn btn-primary w-100">Update Status</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <h2 class="fw-bold mb-4">Recent Prescriptions</h2>
+
+      <div class="row g-4">
+        <% prescriptions.forEach(item => { %>
+          <div class="col-md-4">
+            <div class="card shadow border-0 h-100">
+              <div class="card-body">
+                <h4>📄</h4>
+                <h5 class="text-primary fw-bold"><%= item.title %></h5>
+                <p><b>Patient:</b> <%= item.patientId ? item.patientId.name : "Patient Deleted" %></p>
+                <p><b>Doctor:</b> <%= item.doctorName %></p>
+
+                <a href="<%= item.filePath %>" target="_blank" class="btn btn-primary w-100">View File</a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer py-5">
+  <div class="container">
+
+    <div class="row g-4">
+
+      <div class="col-lg-4">
+        <h4 class="fw-bold mb-3">🏥 CareConnect</h4>
+
+        <p>
+          Smart Healthcare Platform for online appointments,
+          prescription management, doctor discovery and
+          seamless patient care.
+        </p>
+      </div>
+
+      <div class="col-lg-2">
+        <h5 class="mb-3">Quick Links</h5>
+
+        <ul class="list-unstyled">
+          <li><a href="/" class="footer-link">Home</a></li>
+          <li><a href="/doctors" class="footer-link">Doctors</a></li>
+          <li><a href="/dashboard" class="footer-link">Dashboard</a></li>
+          <li><a href="/appointments" class="footer-link">Appointments</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3">
+        <h5 class="mb-3">Company</h5>
+
+        <ul class="list-unstyled">
+          <li><a href="/about" class="footer-link">About Us</a></li>
+          <li><a href="/privacy" class="footer-link">Privacy Policy</a></li>
+          <li><a href="/terms" class="footer-link">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3">
+        <h5 class="mb-3">Contact</h5>
+
+        <p class="mb-2">📧 support@careconnect.com</p>
+        <p class="mb-2">📞 +91 9876543210</p>
+        <p>📍 Bhubaneswar, Odisha, India</p>
+      </div>
+
+    </div>
+
+    <hr class="my-4">
+
+    <div class="text-center">
+      <p class="mb-0">
+        © 2026 CareConnect | Smart Healthcare Platform | All Rights Reserved
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

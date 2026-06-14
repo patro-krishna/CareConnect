@@ -1,0 +1,745 @@
+/* =========================
+   GLOBAL THEME
+========================= */
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --secondary: #14b8a6;
+  --accent: #f97316;
+  --light-bg: #f8fafc;
+  --soft-bg: #eef6ff;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--light-bg);
+  color: var(--text-main);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  color: inherit;
+}
+
+.card p,
+.info-panel p,
+.hero-section p {
+  color: var(--text-muted);
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar,
+.bg-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+}
+
+.navbar-brand {
+  letter-spacing: 0.4px;
+}
+
+.navbar-nav .nav-link {
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #fff3cd !important;
+}
+
+#themeToggle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 18px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.btn-primary,
+.form-container button,
+.card button {
+  background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.btn-primary:hover,
+.form-container button:hover,
+.card button:hover {
+  opacity: 0.92;
+}
+
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-danger {
+  background: #ef4444 !important;
+  border: none !important;
+  border-radius: 12px;
+}
+
+/* =========================
+   HERO / HOME PAGE
+========================= */
+
+.hero-section {
+  background:
+    radial-gradient(circle at top left, rgba(20, 184, 166, 0.18), transparent 35%),
+    linear-gradient(135deg, #eff6ff, #f8fafc 55%, #ecfeff);
+  padding: 70px 0;
+}
+
+.min-vh-75 {
+  min-height: 75vh;
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 24px;
+  padding: 35px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.hero-card p {
+  background: #ecfeff;
+  color: #0f766e;
+  padding: 13px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+  background:
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.12), transparent 30%),
+    linear-gradient(135deg, #eef6ff, #f8fafc);
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+/* =========================
+   CARDS COMMON
+========================= */
+
+.card,
+.service-card,
+.dashboard-card,
+.prescription-card,
+.upload-card,
+.admin-card,
+.info-panel,
+.stats-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border) !important;
+  border-radius: 22px !important;
+  box-shadow: var(--shadow);
+}
+
+.card {
+  transition: 0.25s ease;
+}
+
+.card:hover,
+.service-card:hover,
+.dashboard-card:hover,
+.prescription-card:hover,
+.doctor-card-ui:hover {
+  transform: translateY(-6px);
+}
+
+.card h4,
+.card h5,
+.info-panel h4,
+.dashboard-card h4,
+.dashboard-card h5 {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.card p {
+  margin-bottom: 10px;
+}
+
+/* =========================
+   HOME SECTIONS
+========================= */
+
+.service-card {
+  transition: 0.25s ease;
+}
+
+.stats-box {
+  padding: 26px;
+  text-align: center;
+  font-weight: 800;
+}
+
+/* =========================
+   FORMS / AUTH PAGES
+========================= */
+
+.form-container {
+  max-width: 430px;
+  margin: 70px auto;
+  padding: 34px;
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  border-radius: 24px;
+  border: 1px solid var(--border);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 22px;
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container select,
+.form-control,
+.form-select {
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container select {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 0.2rem rgba(20, 184, 166, 0.18);
+}
+
+textarea {
+  resize: none;
+}
+
+/* =========================
+   ALERTS / BADGES
+========================= */
+
+.error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 12px;
+  border-radius: 14px;
+}
+
+.success {
+  background: #dcfce7;
+  color: #166534;
+  padding: 12px;
+  border-radius: 14px;
+}
+
+.alert-primary,
+.alert-info,
+.alert-warning,
+.alert-danger,
+.alert-success {
+  border-radius: 18px;
+  border: none;
+}
+
+.badge {
+  padding: 8px 13px;
+  font-size: 14px;
+  border-radius: 999px;
+}
+
+/* =========================
+   DASHBOARD PAGE
+========================= */
+
+.dashboard {
+  padding: 50px 8%;
+}
+
+.cards {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.dashboard-card .card-body {
+  padding: 28px;
+}
+
+.info-panel {
+  padding: 28px;
+  height: 100%;
+}
+
+.info-panel p {
+  margin-bottom: 10px;
+}
+
+.info-panel ul {
+  padding-left: 20px;
+}
+
+.info-panel ul li {
+  margin-bottom: 10px;
+  color: var(--text-muted);
+}
+
+/* =========================
+   DOCTORS PAGE
+========================= */
+
+.search-box {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px;
+  margin: 20px 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.doctor-card-ui {
+  border-radius: 22px !important;
+  transition: 0.25s ease;
+}
+
+.doctor-img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #dbeafe;
+  background: white;
+}
+
+/* =========================
+   APPOINTMENTS PAGE
+========================= */
+
+.btn-danger {
+  padding: 10px 16px;
+}
+
+.appointment-card {
+  border-radius: 22px;
+}
+
+/* =========================
+   PRESCRIPTION PAGE
+========================= */
+
+.prescription-card {
+  transition: 0.25s ease;
+}
+
+.prescription-icon {
+  font-size: 40px;
+}
+
+.upload-card .form-control,
+.upload-card button {
+  border-radius: 14px;
+}
+
+/* =========================
+   ADMIN DASHBOARD
+========================= */
+
+.admin-card .form-control,
+.admin-card button {
+  border-radius: 14px;
+}
+
+.stat {
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--secondary);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+  color: white;
+  padding: 32px 0;
+}
+
+.footer p {
+  color: #cbd5e1;
+  margin-bottom: 5px;
+}
+
+/* =========================
+   PITCH BLACK DARK MODE
+========================= */
+
+body.dark-mode {
+  background: #000000 !important;
+  color: #f8fafc !important;
+}
+
+body.dark-mode p,
+body.dark-mode li,
+body.dark-mode label {
+  color: #cbd5e1 !important;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+  color: #f8fafc !important;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .footer,
+body.dark-mode .bg-primary {
+  background: #000000 !important;
+  border-bottom: 1px solid #1f2937;
+}
+
+body.dark-mode .hero-section,
+body.dark-mode .page-header,
+body.dark-mode .bg-light {
+  background: #000000 !important;
+  color: #f8fafc !important;
+}
+
+body.dark-mode .card,
+body.dark-mode .service-card,
+body.dark-mode .dashboard-card,
+body.dark-mode .prescription-card,
+body.dark-mode .upload-card,
+body.dark-mode .admin-card,
+body.dark-mode .hero-card,
+body.dark-mode .info-panel,
+body.dark-mode .form-container,
+body.dark-mode .stats-box {
+  background: #070707 !important;
+  color: #f8fafc !important;
+  border: 1px solid #1f2937 !important;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.03) !important;
+}
+
+body.dark-mode .hero-card p {
+  background: #111111 !important;
+  color: #7dd3fc !important;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select,
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background: #030303 !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+body.dark-mode .text-primary,
+body.dark-mode .card h4,
+body.dark-mode .card h5,
+body.dark-mode .info-panel h4,
+body.dark-mode .dashboard-card h4,
+body.dark-mode .dashboard-card h5 {
+  color: #38bdf8 !important;
+}
+
+body.dark-mode .btn-primary,
+body.dark-mode .form-container button,
+body.dark-mode .card button {
+  background: linear-gradient(135deg, #0284c7, #0f766e) !important;
+}
+
+body.dark-mode .btn-outline-primary {
+  color: #38bdf8 !important;
+  border-color: #38bdf8 !important;
+}
+
+body.dark-mode .btn-outline-primary:hover {
+  background: #38bdf8 !important;
+  color: #000000 !important;
+}
+
+body.dark-mode .btn-light {
+  background: #f8fafc !important;
+  color: #000000 !important;
+}
+
+body.dark-mode .alert-primary,
+body.dark-mode .alert-info {
+  background: #082f49 !important;
+  color: #e0f2fe !important;
+}
+
+body.dark-mode .alert-warning {
+  background: #422006 !important;
+  color: #fef3c7 !important;
+}
+
+body.dark-mode .alert-danger,
+body.dark-mode .error {
+  background: #450a0a !important;
+  color: #fecaca !important;
+}
+
+body.dark-mode .alert-success,
+body.dark-mode .success {
+  background: #052e16 !important;
+  color: #bbf7d0 !important;
+}
+
+body.dark-mode .badge.bg-primary {
+  background: #0284c7 !important;
+}
+
+body.dark-mode .doctor-img {
+  border-color: #1e293b;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+  .navbar-nav {
+    text-align: center;
+    padding-top: 15px;
+  }
+
+  .navbar-nav .nav-link {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  #themeToggle {
+    margin: 10px auto 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header,
+  .hero-section {
+    text-align: center;
+  }
+
+  .hero-section {
+    padding: 45px 0;
+  }
+
+  .display-4 {
+    font-size: 2.2rem;
+  }
+
+  .hero-card,
+  .form-container,
+  .info-panel {
+    padding: 24px;
+  }
+
+  .cards {
+    display: block;
+  }
+
+  .card {
+    margin-bottom: 18px;
+  }
+
+  .footer {
+    padding: 24px 14px;
+  }
+}
+
+.small-text {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.client-error {
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   AUTH PAGES
+========================= */
+
+.auth-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(20, 184, 166, 0.18), transparent 35%),
+    linear-gradient(135deg, #eef6ff, #f8fafc 55%, #ecfeff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 15px;
+}
+
+.admin-auth {
+  background:
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.18), transparent 35%),
+    linear-gradient(135deg, #fff7ed, #f8fafc 55%, #eef6ff);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 26px;
+  padding: 36px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+}
+
+.auth-card h2 {
+  color: #2563eb;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.auth-card .form-control {
+  margin-bottom: 15px;
+  border-radius: 14px;
+  padding: 13px 15px;
+}
+
+.auth-card .btn {
+  padding: 12px;
+  border-radius: 14px;
+}
+
+.auth-link {
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.auth-link a {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.demo-box {
+  margin-top: 20px;
+  background: #fff7ed;
+  color: #9a3412;
+  padding: 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  border: 1px solid #fed7aa;
+}
+
+body.dark-mode .auth-page,
+body.dark-mode .admin-auth {
+  background: #000000 !important;
+}
+
+body.dark-mode .auth-card {
+  background: #070707 !important;
+  border: 1px solid #1f2937 !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .auth-subtitle {
+  color: #cbd5e1 !important;
+}
+
+body.dark-mode .auth-link a {
+  color: #38bdf8 !important;
+}
+
+body.dark-mode .demo-box {
+  background: #111111 !important;
+  color: #fdba74 !important;
+  border: 1px solid #292524 !important;
+}
+
+.footer {
+  background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+  color: #e2e8f0;
+}
+
+.footer-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.footer-link:hover {
+  color: #38bdf8;
+  transform: translateX(4px);
+}
+
+.footer hr {
+  border-color: rgba(255,255,255,0.15);
+}
+
+body.dark-mode .footer {
+  background: #000 !important;
+}
