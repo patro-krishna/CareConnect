@@ -20,6 +20,7 @@ const { checkUser } = require("./middleware/authMiddleware");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 dotenv.config();
+console.log(process.env.MONGO_URI);
 connectDB();
 
 const app = express();
