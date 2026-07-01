@@ -85,28 +85,63 @@
     <div class="row g-4">
       <div class="col-lg-5">
         <div class="card shadow border-0 admin-card">
-          <div class="card-body">
-            <h3 class="text-primary fw-bold mb-4">Add Doctor</h3>
+  <div class="card-body">
 
-<form action="/admin/doctors" method="POST">
+    <h3 class="text-primary fw-bold mb-4">Add Doctor</h3>
 
-<input type="text" name="name" class="form-control mb-3" required>
+    <form action="/admin/doctors" method="POST">
 
-<input type="text" name="specialization" class="form-control mb-3" required>
+      <input
+        type="text"
+        name="name"
+        class="form-control mb-3"
+        placeholder="Doctor Name"
+        required
+      >
 
-<input type="number" name="experience" class="form-control mb-3" required>
+      <input
+        type="text"
+        name="specialization"
+        class="form-control mb-3"
+        placeholder="Specialization"
+        required
+      >
 
-<input type="number" name="fees" class="form-control mb-3" required>
+      <input
+        type="number"
+        name="experience"
+        class="form-control mb-3"
+        placeholder="Experience (Years)"
+        required
+      >
 
-<input type="text" name="availableDays" class="form-control mb-3" required>
+      <input
+        type="number"
+        name="fees"
+        class="form-control mb-3"
+        placeholder="Consultation Fees"
+        required
+      >
 
-<button type="submit" class="btn btn-primary w-100">
-Add Doctor
-</button>
+      <input
+        type="text"
+        name="availableDays"
+        class="form-control mb-3"
+        placeholder="Available Days (e.g. Mon-Fri)"
+        required
+      >
 
-</form>
-          </div>
-        </div>
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+      >
+        Add Doctor
+      </button>
+
+    </form>
+
+  </div>
+</div>
       </div>
 
       <div class="col-lg-7">
