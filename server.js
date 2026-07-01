@@ -24,6 +24,7 @@ console.log(process.env.MONGO_URI);
 connectDB();
 
 const app = express();
+app.set("trust proxy", 1);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -32,12 +33,15 @@ app.use(methodOverride("_method"));
 app.use(morgan("dev"));
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 300,
+  standardHeaders: true,
+  legacyHeaders: false,
   message: "Too many requests, please try again later"
 });
 
 app.use(limiter);
+
 
 global.appCache = new NodeCache({ stdTTL: 60 });
 
