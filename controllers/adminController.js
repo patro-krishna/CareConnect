@@ -40,6 +40,32 @@ const getAdminDashboard = async (req, res) => {
   }
 };
 
+const addDoctor = async (req, res) => {
+  try {
+    const {
+      name,
+      specialization,
+      experience,
+      fees,
+      availableDays
+    } = req.body;
+
+    await Doctor.create({
+      name,
+      specialization,
+      experience,
+      fees,
+      availableDays
+    });
+
+    res.redirect("/admin/dashboard");
+
+  } catch (error) {
+    console.log(error);
+    res.redirect("/admin/dashboard");
+  }
+};
+
 const updateAppointmentStatus = async (req, res) => {
   try {
     const { status } = req.body;
@@ -52,8 +78,23 @@ const updateAppointmentStatus = async (req, res) => {
   }
 };
 
+const deleteDoctor = async (req, res) => {
+  try {
+
+    await Doctor.findByIdAndDelete(req.params.id);
+
+    res.redirect("/admin/dashboard");
+
+  } catch (error) {
+    console.log(error);
+    res.redirect("/admin/dashboard");
+  }
+};
+
 module.exports = {
   getAdminDashboard,
+  addDoctor,
+  deleteDoctor,
   updateAppointmentStatus
 };
 

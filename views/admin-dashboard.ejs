@@ -88,20 +88,23 @@
           <div class="card-body">
             <h3 class="text-primary fw-bold mb-4">Add Doctor</h3>
 
-<input type="text" name="name" id="doctorName" class="form-control mb-3" placeholder="Doctor Name" required>
+<form action="/admin/doctors" method="POST">
 
-<input type="text" name="specialization" id="doctorSpecialization" class="form-control mb-3" placeholder="Specialization" required>
+<input type="text" name="name" class="form-control mb-3" required>
 
-<input type="number" name="experience" id="doctorExperience" class="form-control mb-3" placeholder="Experience" required>
+<input type="text" name="specialization" class="form-control mb-3" required>
 
-<input type="number" name="fees" id="doctorFees" class="form-control mb-3" placeholder="Fees" required>
+<input type="number" name="experience" class="form-control mb-3" required>
 
-<input type="text" name="availableDays" id="doctorAvailableDays" class="form-control mb-3" placeholder="Available Days e.g. Mon-Fri" required>
+<input type="number" name="fees" class="form-control mb-3" required>
 
-<p id="doctorError" class="client-error"></p>
+<input type="text" name="availableDays" class="form-control mb-3" required>
 
-              <button type="submit" class="btn btn-primary w-100">Add Doctor</button>
-            </form>
+<button type="submit" class="btn btn-primary w-100">
+Add Doctor
+</button>
+
+</form>
           </div>
         </div>
       </div>
